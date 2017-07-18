@@ -37,7 +37,8 @@ class FCNObjectDetector():
             rospy.loginfo('DETECTOR SETUP SUCCESSFUL')
 
         ##! publisher setup
-        self.pub_box = rospy.Publisher('~output', BoxArray, queue_size = 1)
+        self.pub_box = rospy.Publisher('~boxes', BoxArray, queue_size = 1)
+        self.pub_img = rospy.Publisher('~image', Image, queue_size = 1)
         self.subscribe()
 
 
@@ -97,7 +98,7 @@ class FCNObjectDetector():
             ] for index, box in enumerate(object_boxes)
         ]
 
-        ##! publish
+        ##! publish and visualize
         boxes = BoxArray()
         for obj_box, obj_label in zip(object_boxes, object_labels):
             box = Box()
@@ -109,15 +110,20 @@ class FCNObjectDetector():
             boxes.boxes.append(box)
 
         boxes.header = image_msg.header
-        self.pub_box.publish(boxes)
 
         alpha = 0.3
         cv.addWeighted(im_out, alpha, cv_img, 1.0 - alpha, 0, im_out)
+
+        imout_msg = self.__bridge.cv2_to_imgmsg(im_out, "bgr8")
+        imout_msg.header = image_msg.header
 
         if self.__visualize:
             cv.namedWindow('detection', cv.WINDOW_NORMAL)
             cv.imshow('detection', im_out)
             cv.waitKey(3)
+
+        self.pub_box.publish(boxes)
+        self.pub_img.publish(imout_msg)
 
 
     def callback(self, image_msg):
