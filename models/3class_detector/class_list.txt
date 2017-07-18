@@ -1,0 +1,4 @@
+dontcare 0
+kinoko 1
+takenoko 2
+pie 3
