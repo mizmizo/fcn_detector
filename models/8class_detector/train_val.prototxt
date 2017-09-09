@@ -6,10 +6,10 @@ layer {
     phase: TRAIN
   }
   transform_param {
-    mean_file: "/home/mizmizo/src/digits/digits/jobs/20170719-211029-f7d0/train_db/mean.binaryproto"
+    mean_file: "/home/mizmizo/src/digits/digits/jobs/20170806-011955-a724/train_db/mean.binaryproto"
   }
   data_param {
-    source: "/home/mizmizo/src/digits/digits/jobs/20170719-211029-f7d0/train_db/features"
+    source: "/home/mizmizo/src/digits/digits/jobs/20170806-011955-a724/train_db/features"
     batch_size: 3
     backend: LMDB
   }
@@ -22,7 +22,7 @@ layer {
     phase: TRAIN
   }
   data_param {
-    source: "/home/mizmizo/src/digits/digits/jobs/20170719-211029-f7d0/train_db/labels"
+    source: "/home/mizmizo/src/digits/digits/jobs/20170806-011955-a724/train_db/labels"
     batch_size: 3
     backend: LMDB
   }
@@ -35,10 +35,10 @@ layer {
     phase: TEST
   }
   transform_param {
-    mean_file: "/home/mizmizo/src/digits/digits/jobs/20170719-211029-f7d0/train_db/mean.binaryproto"
+    mean_file: "/home/mizmizo/src/digits/digits/jobs/20170806-011955-a724/train_db/mean.binaryproto"
   }
   data_param {
-    source: "/home/mizmizo/src/digits/digits/jobs/20170719-211029-f7d0/val_db/features"
+    source: "/home/mizmizo/src/digits/digits/jobs/20170806-011955-a724/val_db/features"
     batch_size: 3
     backend: LMDB
   }
@@ -51,7 +51,7 @@ layer {
     phase: TEST
   }
   data_param {
-    source: "/home/mizmizo/src/digits/digits/jobs/20170719-211029-f7d0/val_db/labels"
+    source: "/home/mizmizo/src/digits/digits/jobs/20170806-011955-a724/val_db/labels"
     batch_size: 3
     backend: LMDB
   }
