@@ -1,0 +1,9 @@
+dontcare 0
+kinoko 1
+takenoko 2
+pie 3
+koara 4
+milktea 5
+mixjuice 6
+greentea 7
+coffee 8

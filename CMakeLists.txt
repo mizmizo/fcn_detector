@@ -19,7 +19,9 @@ catkin_python_setup()
 add_message_files(
   FILES
   Box.msg
+  ScoredBox.msg
   BoxArray.msg
+  ScoredBoxArray.msg
 )
 
 generate_messages(DEPENDENCIES std_msgs)

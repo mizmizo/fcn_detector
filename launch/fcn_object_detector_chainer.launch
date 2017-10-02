@@ -1,0 +1,19 @@
+<launch>
+  <arg name="image" default="/stereo/left/image_rect_color" />
+
+  <!-- detector params -->
+  <arg name="visualize" default="true" />
+
+  <!-- file paths -->
+  <arg name="pretrained_model" default="$(find fcn_detector)/models/chainer/8class_detector/model.npz" />
+  <arg name="class_list" default="$(find fcn_detector)/models/chainer/8class_detector/class_list.txt" />
+
+ <node pkg="fcn_detector" type="object_detector_chainer.py"
+       name="object_detector" output="screen" >
+   <remap from="image" to="$(arg image)" />
+   <param name="pretrained_model" value="$(arg pretrained_model)" />
+   <param name="class_list" value="$(arg class_list)" />
+
+   <param name="visualize" value="$(arg visualize)" />
+ </node>
+</launch>

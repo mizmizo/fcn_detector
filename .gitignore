@@ -1,0 +1,8 @@
+*result/
+*.pyc
+argparse
+chainer
+yaml
+snapshot*
+model_iter*
+*.npz

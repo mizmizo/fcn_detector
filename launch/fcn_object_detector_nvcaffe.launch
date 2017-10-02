@@ -8,11 +8,11 @@
   <arg name="visualize" default="true" />
 
   <!-- file paths -->
-  <arg name="pretrained_weights" default="$(find fcn_detector)/models/8class_detector/detector.caffemodel" />
-  <arg name="deployment_prototxt" default="$(find fcn_detector)/models/8class_detector/deploy.prototxt" />
-  <arg name="class_list" default="$(find fcn_detector)/models/8class_detector/class_list.txt" />
+  <arg name="pretrained_weights" default="$(find fcn_detector)/models/nvcaffe/8class_detector/detector.caffemodel" />
+  <arg name="deployment_prototxt" default="$(find fcn_detector)/models/nvcaffe/8class_detector/deploy.prototxt" />
+  <arg name="class_list" default="$(find fcn_detector)/models/nvcaffe/8class_detector/class_list.txt" />
 
- <node pkg="fcn_detector" type="object_detector.py"
+ <node pkg="fcn_detector" type="object_detector_nvcaffe.py"
        name="object_detector" output="screen" >
    <remap from="image" to="$(arg image)" />
    <param name="pretrained_weights" value="$(arg pretrained_weights)" />
