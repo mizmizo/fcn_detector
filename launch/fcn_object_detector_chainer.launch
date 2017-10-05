@@ -5,8 +5,10 @@
   <arg name="visualize" default="true" />
 
   <!-- file paths -->
-  <arg name="pretrained_model" default="$(find fcn_detector)/models/chainer/8class_detector/model.npz" />
-  <arg name="class_list" default="$(find fcn_detector)/models/chainer/8class_detector/class_list.txt" />
+  <!-- <arg name="pretrained_model" default="$(find fcn_detector)/models/chainer/8class_detector/model.npz" /> -->
+  <!-- <arg name="class_list" default="$(find fcn_detector)/models/chainer/8class_detector/class_list.txt" /> -->
+  <arg name="pretrained_model" default="$(find fcn_detector)/models/chainer/whole_class_detector/model.npz" />
+  <arg name="class_list" default="$(find fcn_detector)/models/chainer/whole_class_detector/class_list.txt" />
 
  <node pkg="fcn_detector" type="object_detector_chainer.py"
        name="object_detector" output="screen" >

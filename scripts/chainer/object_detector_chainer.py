@@ -35,11 +35,13 @@ class FCNObjectDetector():
         self.__gpu = rospy.get_param('~gpu', 0)  #! threshold for masking the detection
         self.__pretrained_model = rospy.get_param('~pretrained_model', None)
         self.__class_list = rospy.get_param('~class_list', None) #! path to class list
+        self.__score_thresh = rospy.get_param('~score_thresh', 0.6)
         self.__visualize = rospy.get_param('~visualize', False)
 
         if self.is_file_valid():
             self.load_model()
             rospy.loginfo('DETECTOR SETUP SUCCESSFUL')
+            rospy.loginfo('Detect thresh: %s' % self.__model.score_thresh)
 
         random.seed(5) #! same seed with image_annotation tool
         rand_list = [random.randint(0, 255) for i in xrange(len(self.__labels) * 3)]
@@ -77,7 +79,7 @@ class FCNObjectDetector():
             rospy.logwarn("not detection")
             return
         else:
-            print "found objects : %s" % [ self.__labels[label] for label in labels ]
+            rospy.loginfo("found objects : %s" % [ self.__labels[label] for label in labels ])
 
         ##! publish and visualize
         boxes = ScoredBoxArray()
@@ -113,6 +115,7 @@ class FCNObjectDetector():
         if self.__gpu >= 0:
             chainer.cuda.get_device_from_id(self.__gpu).use()
             self.__model.to_gpu()
+        self.__model.score_thresh = self.__score_thresh
 
 
     def is_file_valid(self):

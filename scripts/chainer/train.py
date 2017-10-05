@@ -5,8 +5,8 @@ import yaml
 import numpy as np
 import chainer
 
-from detection_dataset import DetectionDataset
-from train_utils import train, get_class_list
+from detection_dataset import DetectionDataset, get_class_list
+from train_utils import train
 from chainercv.visualizations import vis_bbox
 import matplotlib.pyplot as plot
 
