@@ -10,6 +10,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   message_filters
   message_generation
+  jsk_data
 )
 
 find_package(OpenCV REQUIRED)
@@ -32,3 +33,7 @@ catkin_package(
 include_directories(
   ${catkin_INCLUDE_DIRS}
 )
+
+add_custom_target(install_model ALL COMMAND ${PROJECT_SOURCE_DIR}/scripts/install_model.py)
+file(DOWNLOAD https://drive.google.com/file/d/0B09VRnpQxd6PdnphYVZScjkwa1U/view?usp=sharing models/chainer/whole_class_detector/model.npz)
+file(DOWNLOAD https://drive.google.com/file/d/0B09VRnpQxd6PYmQwM1lPMGpVQlE/view?usp=sharing models/chainer/whole_class_detector/class_list.txt SHOW_PROGRESS)
